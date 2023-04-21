@@ -44,11 +44,11 @@ input:focus{
     background-image: linear-gradient(315deg, #4c2885 0%, #4c11ac 100%);
 }
 
-.img-container{
+/* .img-container{
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 .avatar{
     border: 10px solid #2a2a72;
     border-radius: 50%;
@@ -82,9 +82,10 @@ input:focus{
 
 .repo{
     background-color: #2a2a72;
+    border-radius: 10px;
     display: inline-block;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding: 0.25rem 0.5rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
