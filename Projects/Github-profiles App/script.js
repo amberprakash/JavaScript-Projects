@@ -5,15 +5,21 @@ const form = document.getElementById("form");
 const search = document.getElementById("search");
 
 getUser("amberprakash");
-async function getUser(user){
-    const resp = await fetch(APIURL + user);
+async function getUser(username){
+    const resp = await fetch(APIURL + username);
     const respData = await resp.json();
 
     console.log(respData);
     createUserCard(respData);
+    getRepos(username);
 }
 
-// getUser("amberprakash");
+async function getRepos(username){
+    const resp = await fetch(APIURL + username + '/repos');
+    const respData = await resp.json();
+
+    addReposToCard(respData);
+}
 
 function createUserCard(user){
     // const card = document.createElement('div');
@@ -29,14 +35,31 @@ function createUserCard(user){
                 <p>${user.bio}</p>
 
                 <ul class="info">
-                    <li>${user.followers}</li>
-                    <li>${user.following}</li>
-                    <li>${user.public_repos}</li>
+                <li>${user.followers}<strong>Followers</strong></li>
+                <li>${user.following}<strong>Following</strong></li>
+                <li>${user.public_repos}<strong>Repos</strong></li>
                 </ul>
+                <div class="repos" id="repos"></div>
             </div>
         </div>
     `;
     main.innerHTML = cardHTML;
+}
+
+function addReposToCard(repos){
+    const reposEL = document.getElementById("repos");
+    console.log(repos);
+
+    repos.forEach(repo =>{
+        const repoEl = document.createElement('a');
+        repoEl.classList.add('repo');
+
+        repoEl.href = repo.html_url;
+        repoEl.target = "_blank";
+        repoEl.innerText = repo.name;
+
+        reposEL.appendChild(repoEl);
+    })
 }
 
 form.addEventListener('submit', (e)=>{
