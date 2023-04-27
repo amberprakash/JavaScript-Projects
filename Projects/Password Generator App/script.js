@@ -13,20 +13,20 @@ const nummbers = "0123456789";
 const symbols = "!@#$%^&*()_+=";
 // alert(lowerLetters.length);
 
-function getLowercase(){
-    return lowerLetters[Math.floor(Math.random()* lowerLetters.length )];
+function getLowercase() {
+    return lowerLetters[Math.floor(Math.random() * lowerLetters.length)];
 }
 
-function getUppercase(){
-    return upperLetters[Math.floor(Math.random()* upperLetters.length )];
+function getUppercase() {
+    return upperLetters[Math.floor(Math.random() * upperLetters.length)];
 }
 
-function getNumber(){
-    return nummbers[Math.floor(Math.random()* nummbers.length )];
+function getNumber() {
+    return nummbers[Math.floor(Math.random() * nummbers.length)];
 }
 
-function getSymbol(){
-    return symbols[Math.floor(Math.random()* symbols.length )];
+function getSymbol() {
+    return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
 // alert(getSymbol());
@@ -60,31 +60,31 @@ function generatePassword() {
     pwEl.innerText = password;
 }
 
-function generateX(){
-    const xs =[];
-    if(upperEl.checked){
+function generateX() {
+    const xs = [];
+    if (upperEl.checked) {
         xs.push(getUppercase());
     }
-    if(lowerEl.checked){
+    if (lowerEl.checked) {
         xs.push(getLowercase());
     }
-    if(numberEl.checked){
+    if (numberEl.checked) {
         xs.push(getNumber());
     }
-    if(symbolEl.checked){
+    if (symbolEl.checked) {
         xs.push(getSymbol());
     }
-    if(xs.length === 0) return "";
+    if (xs.length === 0) return "";
     return xs[Math.floor(Math.random() * xs.length)];
 }
 
-generateEl.addEventListener("click",generatePassword);
+generateEl.addEventListener("click", generatePassword);
 
-copyEl.addEventListener('click',()=>{
+copyEl.addEventListener('click', () => {
     const textarea = document.createElement('textarea');
     const pass = pwEl.innerText;
 
-    if(!pass){ return; }
+    if (!pass) { return; }
 
     textarea.value = pass;
     document.body.appendChild(textarea);
